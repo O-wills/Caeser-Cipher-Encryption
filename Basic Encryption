@@ -1,0 +1,34 @@
+message = 'I am invincible'
+key = 4
+
+FIRST_ALPHABET_CODE = ord('A')
+LAST_ALPHABET_CODE = ord('Z')
+ALPHABET_RANGE = 26
+
+def caeser_key(message, key):
+    ciphertext = ''
+
+    for alphabet in message.upper():
+        if alphabet.isalpha():
+         alphabet_code = ord(alphabet)
+        new_alphabet_code = alphabet_code + key
+        new_alphabet = chr(new_alphabet_code)
+        
+        if new_alphabet_code > LAST_ALPHABET_CODE:
+            new_alphabet_code -= ALPHABET_RANGE
+        
+        if new_alphabet_code > FIRST_ALPHABET_CODE:
+            new_alphabet_code += ALPHABET_RANGE
+            
+        #print (alphabet, alphabet_code, new_alphabet_code, new_alphabet)
+        
+        ciphertext = ciphertext + new_alphabet
+    
+    print(ciphertext)
+
+#caeser_key('I an invincible ZZ', 7)
+
+user_message = input('message to encrypt:')
+user_key = int(input('key (integer):'))
+
+caeser_key(user_message, user_key)
